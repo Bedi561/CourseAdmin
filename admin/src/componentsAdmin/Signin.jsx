@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSetRecoilState, useRecoilValue } from "recoil";
 import axios from "axios";
 import { adminState } from "../storeAdmin/atoms/admin.js";
@@ -117,7 +117,7 @@ function Signin() {
                                 Sign in
                             </button>
                             <p className="text-sm font-light text-gray-500">
-                                Don&apos;t have an account yet? <a href="/admin/signup" className="font-medium text-blue-600 hover:underline">Sign up</a>
+                            Don&apos;t have an account yet? <Link to="/admin/signup" className="font-medium text-blue-600 hover:underline">Sign up</Link>
                             </p>
                         </form>
                     </div>
