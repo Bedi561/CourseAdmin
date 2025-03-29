@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSetRecoilState, useRecoilValue } from "recoil";
 import axios from "axios";
@@ -32,19 +32,24 @@ function Signin() {
                 }
             );
             const data = res.data;
-
-            localStorage.setItem("token", data.token);
+    
+            // Store both tokens in localStorage under the correct key names
+            localStorage.setItem("token", data.token);  // Access token saved under "token"
+            localStorage.setItem("refreshToken", data.refreshToken);  // Refresh token remains unchanged
+    
             setAdmin({
                 isLoading: false,
                 adminEmail: username
             });
+    
             navigate("/admin/dashboard");
         } catch (error) {
             console.error("Signin error:", error);
             alert("Invalid username or password. Please try again.");
         }
     };
-
+    
+    
     if (loading) {
         return (
             <div className="flex justify-center items-center h-screen">
